@@ -22,6 +22,11 @@ CONSTRAINT PK_CompanyID PRIMARY KEY (CompanyID)
 
 )
 
+CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
+------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
+------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
+------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
+
 CREATE TABLE Platforms
 (PlatformID INT IDENTITY(1,1),
 [Platform] VARCHAR(35) NOT NULL,
