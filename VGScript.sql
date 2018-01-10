@@ -108,11 +108,13 @@ CREATE TABLE Worlds
 (WorldID INT IDENTITY(1,1),
 WorldName VARCHAR(100) NOT NULL,
 [Population] BIGINT NULL,
-SeriesID INT NOT NULL
+SeriesID INT NOT NULL,
+TitleID INT NULL
 
 
 CONSTRAINT PK_WorldID PRIMARY KEY (WorldID),
-CONSTRAINT FK_Worlds_Series FOREIGN KEY (SeriesID) REFERENCES Series (SeriesID)
+CONSTRAINT FK_Worlds_Series FOREIGN KEY (SeriesID) REFERENCES Series (SeriesID),
+CONSTRAINT FK_Worlds_Titles FOREIGN KEY (TitleID) REFERENCES Titles(TitleID)
 )
 
 CREATE TABLE Locations
@@ -120,7 +122,12 @@ CREATE TABLE Locations
 LocationName VARCHAR(200) NOT NULL,
 SeriesID INT NOT NULL,
 TitleID INT NULL,
-WorldID INT NULL
+WorldID INT NULL,
+Environment1 VARCHAR(15) NULL,
+Environment2 VARCHAR(15) NULL,
+Environment3 VARCHAR(15) NULL,
+[Population] INT NULL,
+Notes VARCHAR(MAX) NULL
 
 
 
@@ -161,13 +168,14 @@ PrimaryPurpose INT NULL,
 SecondaryPurpose INT NULL,
 TertiaryPurpose INT NULL,
 BaseDamage VARCHAR(15) NULL,
+ObtainMethod VARCHAR(35) NULL
 
 
-
-CONSTRAINT PK_ItemID PRIMARY KEY (ItemID)
+CONSTRAINT PK_ItemID PRIMARY KEY (ItemID),
 CONSTRAINT FK_Item_Purpose1 FOREIGN KEY (PrimaryPurpose) REFERENCES ItemPurpose(PurposeID),
 CONSTRAINT FK_Item_Purpose2 FOREIGN KEY (SecondaryPurpose) REFERENCES ItemPurpose(PurposeID),
-CONSTRAINT FK_Item_Purpose3 FOREIGN KEY (TertiaryPurpose) REFERENCES ItemPurpose(PurposeID) 
+CONSTRAINT FK_Item_Purpose3 FOREIGN KEY (TertiaryPurpose) REFERENCES ItemPurpose(PurposeID) ,
+CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'Punishment', 'Drop'))
 )
 
 
@@ -230,7 +238,8 @@ VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, th
 ('Boss Enemy', 'Terror. Frustration. Awe. These big baddies will probably inspire these in the player, or at least in the player character.'),
 ('Sub-Boss Enemy', 'These are enemies that are stronger than the average enemy. They might move faster, or take more hits, or '),
 	('Generic Enemy', 'Maybe it is just something you would consider fodder, or maybe it is nothing to scoff at, but something that falls in this category is a threat to you; however, it is not relevant enough to the plot of the game or powerful enough (or grandiose enough) to fall into the other enemy categories.'),
-		('Generic NPC', ''), ('Shopkeeper', ''), ('Character Class', ''), ('Primary Grey Character', ''), ('Secondary Grey Character', '')
+		('Generic NPC', 'Another face in the crowd, these are characters that you cannot play as, and either have very little character to them, or are incredibly inconsequential to the story. However, they still do have a set name or title.'), 
+		('Shopkeeper', 'So many wares! This role encompasses those that sell you different types of item'), ('Character Class', ''), ('Primary Grey Character', ''), ('Secondary Grey Character', '')
 
 INSERT Series (SeriesName, DebutDate)
 VALUES ('Team Fortress', '04-07-1999')
@@ -271,4 +280,310 @@ VALUES ('Sniper', 'Mundy', 1, 1, 7, 42,'One of the Support classes of Team Fortr
 INSERT Characters ( CharTitle, SeriesID, TitleID, RoleID, Notes)
 VALUES ('Spy', 1, 1, 7, 'One of the Support classes of Team Fortress 2, the Spy is mystery-incarnate. No one knows exactly where he is from or who he is. He sneaks around like a specter, and just when you least expect it, you might find a knife lodged into your spinal column.')
 
-INSERT
+
+INSERT Worlds (WorldName, SeriesID)
+VALUES ('Earth', 1)
+
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Banana Bay', 1, 1, 1, 'Tropical', NULL, 'A community-created Payload Race map introduced in the October 20, 2017 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Brazil', 1, 1, 1, 'Jungle', NULL, 'A community-created King of the Hill map introduced in the October 20, 2017 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
+VALUES ('Enclosure', 1, 1, 1, 'Jungle', 'Industrial', NULL, 'A community-created Payload map introduced in the October 20, 2017 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
+VALUES ('Lazarus', 1, 1, 1, 'Jungle', 'Industrial', NULL, 'A community-created King of the Hill map introduced in the October 20, 2017 patch.')
+
+--SELECT * FROM Locations
+
+--UPDATE Locations
+--SET Notes .WRITE ('B', 0, 1)
+--WHERE LocationID = 1
+
+--UPDATE Locations
+--SET LocationName = STUFF(LocationName, 1, 0, 'ack')
+--WHERE LocationID = 4
+
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mercenary Park', 1, 1, 1, 'Ruins', NULL, 'An official Attack/Defend map created by Valve. It was introduced in the October 20, 2017 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mossrock', 1, 1, 1, 'Jungle', NULL, 'A community-created Attack/Defend map introduced in the October 20, 2017 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('2Fort', 1, 1, 1, 'Farmland', NULL, 'An official Capture the Flag map that was shipped with the release of Team Fortress 2.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('2Fort Invasion', 1, 1, 1, 'Farmland', NULL, 'A variant of the Capture the Flag map, 2Fort, introduced in the October 6, 2015 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
+VALUES ('Double Cross', 1, 1, 1, 'Alpine', 'Industrial', NULL, 'An official Capture the Flag map created by Valve, introduced in the December 17, 2009 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Landfall', 1, 1, 1, 'Alpine', NULL, 'A community-created Capture the Flag map introduced in the December 17, 2015 patch..')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Sawmill', 1, 1, 1, 'Alpine', NULL, 'An official Capture the Flag / King of the Hill / Arena map created by Valve. The former two modes were introduced in the August 13, 2009 patch, while the latter mode was introduced in the May 21, 2009 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Turbine', 1, 1, 1, 'Industrial', NULL, 'A community-created Capture the Flag map introduced in the June 19, 2008 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Well', 1, 1, 1, 'Industrial', NULL, 'An official Control Point / Capture the Flag / Arena map created by Valve. The former mode was released with Team Fortress 2, while CTF was released in the January 25, 2008 patch, and the latter was released in the August 19, 2008 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('5Gorge', 1, 1, 1, 'Alpine', NULL, 'An official Control Point map created by Valve in the January 19, 2011 patch.')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Badlands', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Coldfront', 1, 1, 1, 'Snowy', 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Fastlane', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Foundry', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Freight', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Granary', 1, 1, 1, 'Farmland', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Gullywash', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Metalworks', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Powerhouse', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Process', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Sinshine', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Snakewater', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Sunshine', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Vanguard', 1, 1, 1, 'Construction', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Well', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Yukon', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Egypt', 1, 1, 1, 'Egyptian', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Evnironment2, [Population], Notes)
+VALUES ('Gorge', 1, 1, 1, 'Alpine', 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Gorge Event', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Gravel Pit', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Junction', 1, 1, 1, 'Spytech', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mann Manor', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mountain Lab', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Snowplow', 1, 1, 1, 'Snowy', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Steel', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('DeGroot Keep', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Standin', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Hydro', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Badwater Basin', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Barnblitz', 1, 1, 1, 'Snow', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Borneo', 1, 1, 1, 'Jungle', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Brimstone', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Cactus Canyon', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Frontier', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Gold Rush', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Hellstone', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Hoodoo', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Snowycoast', 1, 1, 1, 'Snow', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Swiftwater', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Thunder Mountain', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Upward', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Helltower', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Hightower', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Nightfall', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Pipeline', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Byre', 1, 1, 1, 'Farmland', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Granary', 1, 1, 1, 'Farmland', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Lumberyard', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Nucleus', 1, 1, 1, 'Spytech', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Offblast', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Ravine', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Watchtower', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Well', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Eyeaduct', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Ghost Fort', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Harvest', 1, 1, 1, 'Farmland', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Harvest Event', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Highpass', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Kong King', 1, 1, 1, 'City', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Lakeside', 1, 1, 1, 'Egyptian', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Maple Ridge Event', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Moonshine Event', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Probed', 1, 1, 1, 'Farmland', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Suijin', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Viaduct', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Carnival of Carnage', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Doomsday', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Dustbowl', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Target', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Bigrock', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Coal Town', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Decoy', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Ghost Town', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mannhattan', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Mannworks', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Rottenburg', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Foundry', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Hellfire', 1, 1, 1, 'Desert', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Brickyard', 1, 1, 1, 'Industrial', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('District', 1, 1, 1, 'City', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Timberlodge', 1, 1, 1, 'Alpine', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+VALUES ('Pit of Death', 1, 1, 1, 'Halloween', NULL, '')
+
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
+VALUES ('Watergate', 1, 1, 1, 'Brewery', 'Maritime City', NULL, '')
+
