@@ -23,9 +23,9 @@ CONSTRAINT PK_CompanyID PRIMARY KEY (CompanyID)
 )
 
 CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
-------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
-------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
-------CREATE NONCLUSTERED INDEX  ind_CompanyName  ON Companies (CompanyName)
+CREATE NONCLUSTERED INDEX  ind_CompanyStAddress  ON Companies (HQStreetAddress)
+CREATE NONCLUSTERED INDEX  ind_CompanyCity  ON Companies (HQCity)
+CREATE NONCLUSTERED INDEX  ind_CompanyCountry  ON Companies (HQCountry)
 
 CREATE TABLE Platforms
 (PlatformID INT IDENTITY(1,1),
@@ -203,13 +203,6 @@ CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'P
 
 
 
-
-
-
-
-
-
-
 INSERT Platforms ([Platform], Manufacturer, ReleaseDate, Generation, UnitsSold, Price, Discontinued, DisconDate)
 VALUES ('Windows PC', 'Microsoft', NULL, NULL, NULL, NULL, 0, NULL)
 
@@ -235,6 +228,9 @@ INSERT Platforms ([Platform], Manufacturer, ReleaseDate, Generation, UnitsSold, 
 VALUES ('Playstation 3', 'Sony', '11-11-2006', 7, 80000000, '599.00', 1, '05-29-2017')
 
 
+
+
+
 INSERT CharacterRoles (CharacterRole, RoleDescription)
 VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, the underdog; whatever they are, it probably is what you are playing as. To put it simply, it is the main "good" character.'), 
 ('Secondary Protagonist', 'Your best friend, your partner-in-crime, the peanut butter to your jelly; this character '), 
@@ -246,16 +242,37 @@ VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, th
 		('Generic NPC', 'Another face in the crowd, these are characters that you cannot play as, and either have very little character to them, or are incredibly inconsequential to the story. However, they still do have a set name or title.'), 
 		('Shopkeeper', 'So many wares! This role encompasses those that sell you different types of item'), ('Character Class', ''), ('Primary Grey Character', ''), ('Secondary Grey Character', '')
 
+
+
+
+
+
+
 INSERT Series (SeriesName, DebutDate)
 VALUES ('Team Fortress', '04-07-1999')
+
+
+
+
+
+
 
 INSERT Titles (SeriesID, Title, SeriesPlacement, ReleaseDate, PCSpecs)
 VALUES (1, 'Team Fortress 2', 'Second Installment', '10-10-2007', 'OS: Windows® 7 (32/64-bit)/Vista/XP . 
 Processor: 1.7 GHz Processor or better . Memory: 512 MB RAM . DirectX: Version 8.1 . 
 Network: Broadband Internet connection . Storage: 15 GB available space')
 
+
+
+
+
 INSERT PlatformTitle (TitleID, PlatformID)
 VALUES (1, 1), (1, 6), (1, 8)
+
+
+
+
+
 
 
 INSERT Characters ( CharTitle, CharFirstName, SeriesID, TitleID, RoleID, Age, Notes)
@@ -286,8 +303,19 @@ INSERT Characters ( CharTitle, SeriesID, TitleID, RoleID, Notes)
 VALUES ('Spy', 1, 1, 7, 'One of the Support classes of Team Fortress 2, the Spy is mystery-incarnate. No one knows exactly where he is from or who he is. He sneaks around like a specter, and just when you least expect it, you might find a knife lodged into your spinal column.')
 
 
+
+
+
+
+
 INSERT Worlds (WorldName, SeriesID)
 VALUES ('Earth', 1)
+
+
+
+
+
+
 
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
@@ -301,17 +329,6 @@ VALUES ('Enclosure', 1, 1, 1, 'Jungle', 'Industrial', NULL, 'A community-created
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
 VALUES ('Lazarus', 1, 1, 1, 'Jungle', 'Industrial', NULL, 'A community-created King of the Hill map introduced in the October 20, 2017 patch.')
-
---SELECT * FROM Locations
-
---UPDATE Locations
---SET Notes .WRITE ('B', 0, 1)
---WHERE LocationID = 1
-
---UPDATE Locations
---SET LocationName = STUFF(LocationName, 1, 0, 'ack')
---WHERE LocationID = 4
-
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
 VALUES ('Mercenary Park', 1, 1, 1, 'Ruins', NULL, 'An official Attack/Defend map created by Valve. It was introduced in the October 20, 2017 patch.')
@@ -344,9 +361,9 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Popul
 VALUES ('5Gorge', 1, 1, 1, 'Alpine', NULL, 'An official Control Point map created by Valve in the January 19, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
-VALUES ('Badlands', 1, 1, 1, 'Desert', NULL, '')
+VALUES ('Badlands', 1, 1, 1, 'Desert', NULL, 'An official Control Point / King of the Hill / Arena')
 
-INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
 VALUES ('Coldfront', 1, 1, 1, 'Snowy', 'Alpine', NULL, '')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
@@ -394,7 +411,7 @@ VALUES ('Yukon', 1, 1, 1, 'Alpine', NULL, '')
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
 VALUES ('Egypt', 1, 1, 1, 'Egyptian', NULL, '')
 
-INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Evnironment2, [Population], Notes)
+INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, Environment2, [Population], Notes)
 VALUES ('Gorge', 1, 1, 1, 'Alpine', 'Industrial', NULL, '')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, Environment1, [Population], Notes)
