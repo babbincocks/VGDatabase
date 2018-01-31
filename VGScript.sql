@@ -378,7 +378,7 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Fastlane', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the June 19, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Foundry', 1, 1, 1, NULL, 'An official Control Point map created by Valve in the December 15, 2011 patch.')
+VALUES ('Foundry', 1, 1, 1, NULL, 'An official Control Point / Mannpower map created by Valve. The Control Point variant was introduced in the December 15, 2011 patch, while the Mannpower variant was introduced in the December 22, 2014 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Freight', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the April 28, 2010 patch.')
@@ -414,34 +414,34 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Yukon', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Egypt', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the February 24, 2009 patch.')
+VALUES ('Egypt', 1, 1, 1, NULL, 'A community-created Attack/Defend map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID,   [Population], Notes)
-VALUES ('Gorge', 1, 1, 1,   NULL, 'An official Attack / Defend map created by Valve in the December 17, 2009 patch.')
+VALUES ('Gorge', 1, 1, 1,   NULL, 'An official Attack/Defend / Mannpower map created by Valve. The Attack/Defend variant was introduced in the December 17, 2009 patch, while the Mannpower variant was introduced in the December 22, 2014 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Gorge Event', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the October 28, 2015 patch.')
+VALUES ('Gorge Event', 1, 1, 1, NULL, 'A community-created Attack/Defend map introduced in the October 28, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Gravel Pit', 1, 1, 1, NULL, 'An official Attack / Defend map that was shipped with the release of Team Fortress 2.')
+VALUES ('Gravel Pit', 1, 1, 1, NULL, 'An official Attack/Defend map that was shipped with the release of Team Fortress 2.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Junction', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the February 24, 2009 patch.')
+VALUES ('Junction', 1, 1, 1, NULL, 'A community-created Attack/Defend map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mann Manor', 1, 1, 1, NULL, 'An Attack / Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
+VALUES ('Mann Manor', 1, 1, 1, NULL, 'An Attack/Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mountain Lab', 1, 1, 1, NULL, 'An Attack / Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
+VALUES ('Mountain Lab', 1, 1, 1, NULL, 'An Attack/Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Snowplow', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the July 2, 2015 patch. It works slightly different from other Attack / Defend maps, as the timer for the attackers is measured by damage a train that they are guiding has received.')
+VALUES ('Snowplow', 1, 1, 1, NULL, 'A community-created Attack/Defend map introduced in the July 2, 2015 patch. It works slightly different from other Attack/Defend maps, as the timer for the attackers is measured by damage a train that they are guiding has received.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Steel', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the August 19, 2008 patch. It works slightly different from the other Attack / Defend maps, as the final control point for the attackers is available from the beginning, but is harder to capture the more points that remain under the control of the defending team.')
+VALUES ('Steel', 1, 1, 1, NULL, 'A community-created Attack/Defend map introduced in the August 19, 2008 patch. It works slightly different from the other Attack/Defend maps, as the final control point for the attackers is available from the beginning, but is harder to capture the more points that remain under the control of the defending team.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('DeGroot Keep', 1, 1, 1, NULL, 'An official Attack / Defend map created by Valve in the December 17, 2010 patch. This is the only map that supports Medieval mode, which limits the items available, mainly to just melee weapons.')
+VALUES ('DeGroot Keep', 1, 1, 1, NULL, 'An official Attack/Defend map created by Valve in the December 17, 2010 patch. This is the only map that supports Medieval mode, which limits the items available, mainly to just melee weapons.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Standin', 1, 1, 1, NULL, 'A community-created Control Point map that follows a special set of rules known as "Domination".  It was introduced in the July 10, 2013 patch.')
@@ -483,7 +483,7 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Swiftwater', 1, 1, 1, NULL, 'A community-created Payload map introduced in the July 7, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Thunder Mountain', 1, 1, 1, NULL, 'An official Payload map created by Valve in the July 8, 2010 patch.')
+VALUES ('Thunder Mountain', 1, 1, 1, NULL, 'An official Payload / Mannpower map created by Valve. The Payload variant was introduced in the July 8, 2010 patch, while the Mannpower variant was introduced in the March 12, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Upward', 1, 1, 1, NULL, 'An official Payload map created by Valve in the July 8, 2010 patch.')
@@ -519,93 +519,97 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Watchtower', 1, 1, 1, NULL, 'A community-created Arena map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Eyeaduct', 1, 1, 1, NULL, '')
+VALUES ('Eyeaduct', 1, 1, 1, NULL, 'An official King of the Hill map created by Valve in the October 27, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Ghost Fort', 1, 1, 1, NULL, '')
+VALUES ('Ghost Fort', 1, 1, 1, NULL, 'An official King of the Hill map created by Valve in the October 26, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Harvest', 1, 1, 1, NULL, '')
+VALUES ('Harvest', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the October 29, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Harvest Event', 1, 1, 1, NULL, '')
+VALUES ('Harvest Event', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the October 29, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Highpass', 1, 1, 1, NULL, '')
+VALUES ('Highpass', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the December 17, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Kong King', 1, 1, 1, NULL, '')
+VALUES ('Kong King', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the August 10, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Lakeside', 1, 1, 1, NULL, '')
+VALUES ('Lakeside', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the February 24, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Maple Ridge Event', 1, 1, 1, NULL, '')
+VALUES ('Maple Ridge Event', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the October 21, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Moonshine Event', 1, 1, 1, NULL, '')
+VALUES ('Moonshine Event', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the October 28, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Probed', 1, 1, 1, NULL, '')
+VALUES ('Probed', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the October 6, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Suijin', 1, 1, 1, NULL, '')
+VALUES ('Suijin', 1, 1, 1, NULL, 'A community-created King of the Hill map introduced in the July 2, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Viaduct', 1, 1, 1, NULL, '')
+VALUES ('Viaduct', 1, 1, 1, NULL, 'An official King of the Hill map created by Valve in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Carnival of Carnage', 1, 1, 1, NULL, '')
+VALUES ('Carnival of Carnage', 1, 1, 1, NULL, 'An official Special Delivery map created by Valve in the October 29, 2014 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Doomsday', 1, 1, 1, NULL, '')
+VALUES ('Doomsday', 1, 1, 1, NULL, 'An official Special Delivery map created by Valve in the June 27, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Dustbowl', 1, 1, 1, NULL, '')
+VALUES ('Dustbowl (Training)', 1, 1, 1, NULL, 'A special variant of Dustbowl created by Valve in the June 10, 2010 patch. It was created to introduce new players to the mechanics of Team Fortress 2 in a very enclosed environment.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Target', 1, 1, 1, NULL, '')
+VALUES ('Target', 1, 1, 1, NULL, 'A training map created by Valve in the June 10, 2010 patch. It is essentially a shooting range.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Bigrock', 1, 1, 1, NULL, '')
+VALUES ('Bigrock', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the December 20, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Coal Town', 1, 1, 1, NULL, '')
+VALUES ('Coal Town', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the August 15, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Decoy', 1, 1, 1, NULL, '')
+VALUES ('Decoy', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the August 15, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Ghost Town', 1, 1, 1, NULL, '')
+VALUES ('Ghost Town', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the October 26, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mannhattan', 1, 1, 1, NULL, '')
+VALUES ('Mannhattan', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the November 21, 2013 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mannworks', 1, 1, 1, NULL, '')
+VALUES ('Mannworks', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the August 15, 2012 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Rottenburg', 1, 1, 1, NULL, '')
+VALUES ('Rottenburg', 1, 1, 1, NULL, 'An official Mann Vs. Machine map created by Valve in the November 21, 2013 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Foundry', 1, 1, 1, NULL, '')
+VALUES ('Asteroid', 1, 1, 1, NULL, 'A special map created by Valve in the July 8, 2014 patch. It used a unique gamemode called "Robot Destruction", however this map never left beta.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Hellfire', 1, 1, 1, NULL, '')
+VALUES ('Hellfire', 1, 1, 1, NULL, 'An official Mannpower map created by Valve in the October 28, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Brickyard', 1, 1, 1, NULL, '')
+VALUES ('Brickyard', 1, 1, 1, NULL, 'A PASS Time map that was created by both Valve and two other studios: Bad Robot and Escalation Studios. It was introduced in the August 18, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('District', 1, 1, 1, NULL, '')
+VALUES ('District', 1, 1, 1, NULL, 'A PASS Time map that was created by both Valve and two other studios: Bad Robot and Escalation Studios. It was introduced in the July 7, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Timberlodge', 1, 1, 1, NULL, '')
+VALUES ('Timberlodge', 1, 1, 1, NULL, 'A PASS Time map that was created by both Valve and two other studios: Bad Robot and Escalation Studios. It was introduced in the November 25, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Pit of Death', 1, 1, 1, NULL, '')
+VALUES ('Pit of Death', 1, 1, 1, NULL, 'A community-created Player Destruction map introduced in the October 21, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID,   [Population], Notes)
-VALUES ('Watergate', 1, 1, 1, NULL, '')
+VALUES ('Watergate', 1, 1, 1, NULL, 'A community-created Player Destruction map introduced in the October 6, 2015 patch.')
 
+SELECT * FROM Locations
+SELECT * FROM Environments
 
+INSERT LocationEnvironments
+VALUES ( 1, 1), (1, 2), ( 2, 2), ( 3, ), ( 4, ), ( 5, ), ( 6, ), ( 7, ), ( 8, ), ( 9, ), ( 10, ), ( 11, ), ( 12, ), ( 13, ), ( 14, ), 
