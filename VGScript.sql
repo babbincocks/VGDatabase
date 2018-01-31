@@ -411,9 +411,6 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Vanguard', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the December 17, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Well', 1, 1, 1, NULL, 'An official Control Point map that was shipped with the release of Team Fortress 2.')
-
-INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Yukon', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
@@ -513,16 +510,13 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Nucleus', 1, 1, 1, NULL, 'An official Arena / King of the Hill map created by Valve. The Arena variant was introduced in the May 21, 2009 patch, while the King of the Hill variant was introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Offblast', 1, 1, 1, NULL, '')
+VALUES ('Offblast', 1, 1, 1, NULL, 'A community-created Arena map introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Ravine', 1, 1, 1, NULL, '')
+VALUES ('Ravine', 1, 1, 1, NULL, 'An official Arena map created by Valve in the August 19, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Watchtower', 1, 1, 1, NULL, '')
-
-INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Well', 1, 1, 1, NULL, '')
+VALUES ('Watchtower', 1, 1, 1, NULL, 'A community-created Arena map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Eyeaduct', 1, 1, 1, NULL, '')
