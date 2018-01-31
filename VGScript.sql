@@ -202,15 +202,7 @@ CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'P
 
 
 
-
-
-
-
-
-
-
-
-
+---------------------------------POPULATION START-----------------------------------------------------------------------------------------------
 
 
 
@@ -392,7 +384,7 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Freight', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the April 28, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Granary', 1, 1, 1, NULL, 'An official Control Point map that was shipped with the release of Team Fortress 2.')
+VALUES ('Granary', 1, 1, 1, NULL, 'An official Control Point / Arena map created by Valve. The Control point variant was shipped with the release of Team Fortress 2, while the Arena variant was released in the August 19, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Gullywash', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the October 13, 2011 patch.')
@@ -422,106 +414,103 @@ INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Well', 1, 1, 1, NULL, 'An official Control Point map that was shipped with the release of Team Fortress 2.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Yukon', 1, 1, 1, NULL, '')
+VALUES ('Yukon', 1, 1, 1, NULL, 'A community-created Control Point map introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Egypt', 1, 1, 1, NULL, '')
+VALUES ('Egypt', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID,   [Population], Notes)
-VALUES ('Gorge', 1, 1, 1,   NULL, '')
+VALUES ('Gorge', 1, 1, 1,   NULL, 'An official Attack / Defend map created by Valve in the December 17, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Gorge Event', 1, 1, 1, NULL, '')
+VALUES ('Gorge Event', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the October 28, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Gravel Pit', 1, 1, 1, NULL, '')
+VALUES ('Gravel Pit', 1, 1, 1, NULL, 'An official Attack / Defend map that was shipped with the release of Team Fortress 2.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Junction', 1, 1, 1, NULL, '')
+VALUES ('Junction', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the February 24, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mann Manor', 1, 1, 1, NULL, '')
+VALUES ('Mann Manor', 1, 1, 1, NULL, 'An Attack / Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Mountain Lab', 1, 1, 1, NULL, '')
+VALUES ('Mountain Lab', 1, 1, 1, NULL, 'An Attack / Defend map that was created by both Valve and several community members. It was introduced in the October 27, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Snowplow', 1, 1, 1, NULL, '')
+VALUES ('Snowplow', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the July 2, 2015 patch. It works slightly different from other Attack / Defend maps, as the timer for the attackers is measured by damage a train that they are guiding has received.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Steel', 1, 1, 1, NULL, '')
+VALUES ('Steel', 1, 1, 1, NULL, 'A community-created Attack / Defend map introduced in the August 19, 2008 patch. It works slightly different from the other Attack / Defend maps, as the final control point for the attackers is available from the beginning, but is harder to capture the more points that remain under the control of the defending team.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('DeGroot Keep', 1, 1, 1, NULL, '')
+VALUES ('DeGroot Keep', 1, 1, 1, NULL, 'An official Attack / Defend map created by Valve in the December 17, 2010 patch. This is the only map that supports Medieval mode, which limits the items available, mainly to just melee weapons.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Standin', 1, 1, 1, NULL, '')
+VALUES ('Standin', 1, 1, 1, NULL, 'A community-created Control Point map that follows a special set of rules known as "Domination".  It was introduced in the July 10, 2013 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Hydro', 1, 1, 1, NULL, '')
+VALUES ('Hydro', 1, 1, 1, NULL, 'An official map that was shipped with the release of Team Fortress 2. Its game type is unique only to itself, known as "Territorial Control", which is similar to a Control Point map.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Badwater Basin', 1, 1, 1, NULL, '')
+VALUES ('Badwater Basin', 1, 1, 1, NULL, 'An official Payload map created by Valve in the August 19, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Barnblitz', 1, 1, 1, NULL, '')
+VALUES ('Barnblitz', 1, 1, 1, NULL, 'An official Payload map created by Valve in the June 23, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Borneo', 1, 1, 1, NULL, '')
+VALUES ('Borneo', 1, 1, 1, NULL, 'A community-created Payload map introduced in the July 2, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Brimstone', 1, 1, 1, NULL, '')
+VALUES ('Brimstone', 1, 1, 1, NULL, 'A community-created Payload map introduced in the October 21, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Cactus Canyon', 1, 1, 1, NULL, '')
+VALUES ('Cactus Canyon', 1, 1, 1, NULL, 'An official Payload map created by Valve in the July 8, 2014 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Frontier', 1, 1, 1, NULL, '')
+VALUES ('Frontier', 1, 1, 1, NULL, 'A community-created Payload map introduced in the February 24, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Gold Rush', 1, 1, 1, NULL, '')
+VALUES ('Gold Rush', 1, 1, 1, NULL, 'An official Payload map created by Valve in the April 29, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Hellstone', 1, 1, 1, NULL, '')
+VALUES ('Hellstone', 1, 1, 1, NULL, 'A community-created Payload map introduced in the October 28, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Hoodoo', 1, 1, 1, NULL, '')
+VALUES ('Hoodoo', 1, 1, 1, NULL, 'A community-created Payload map introduced in the May 21, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Snowycoast', 1, 1, 1, NULL, '')
+VALUES ('Snowycoast', 1, 1, 1, NULL, 'A community-created Payload map introduced in the December 17, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Swiftwater', 1, 1, 1, NULL, '')
+VALUES ('Swiftwater', 1, 1, 1, NULL, 'A community-created Payload map introduced in the July 7, 2016 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Thunder Mountain', 1, 1, 1, NULL, '')
+VALUES ('Thunder Mountain', 1, 1, 1, NULL, 'An official Payload map created by Valve in the July 8, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Upward', 1, 1, 1, NULL, '')
+VALUES ('Upward', 1, 1, 1, NULL, 'An official Payload map created by Valve in the July 8, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Helltower', 1, 1, 1, NULL, '')
+VALUES ('Helltower', 1, 1, 1, NULL, 'An official Payload Race map created by Valve in the October 29, 2013 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Hightower', 1, 1, 1, NULL, '')
+VALUES ('Hightower', 1, 1, 1, NULL, 'An official Payload Race map created by Valve in the July 8, 2010 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Nightfall', 1, 1, 1, NULL, '')
+VALUES ('Nightfall', 1, 1, 1, NULL, 'A community-created Payload Race map introduced in the February 24, 2011 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Pipeline', 1, 1, 1, NULL, '')
+VALUES ('Pipeline', 1, 1, 1, NULL, 'An official Payload Race map created by Valve in the May 21, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Byre', 1, 1, 1, NULL, '')
+VALUES ('Byre', 1, 1, 1, NULL, 'A community-created Arena map introduced in the October 6, 2015 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Granary', 1, 1, 1, NULL, '')
+VALUES ('Lumberyard', 1, 1, 1, NULL, 'An official Arena map created by Valve in the August 19, 2008 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Lumberyard', 1, 1, 1, NULL, '')
-
-INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
-VALUES ('Nucleus', 1, 1, 1, NULL, '')
+VALUES ('Nucleus', 1, 1, 1, NULL, 'An official Arena / King of the Hill map created by Valve. The Arena variant was introduced in the May 21, 2009 patch, while the King of the Hill variant was introduced in the August 13, 2009 patch.')
 
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID, [Population], Notes)
 VALUES ('Offblast', 1, 1, 1, NULL, '')
