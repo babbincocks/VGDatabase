@@ -322,7 +322,8 @@ VALUES ('Earth', 1)
 
 INSERT Environments (Environment)
 VALUES ('Tropical'),('Jungle'),('Industrial'),('Ruins'),('Farmland'),('Alpine'),('Desert'),('Snowy'),('Halloween'),
-('Construction'),('Egyptian'),('Spytech'),('City'),('Maritime City'),('Brewery'),('Tundra'), ('Volcanic')
+('Construction'),('Egyptian'),('Spytech'),('City'),('Maritime City'),('Brewery'),('Tundra'), ('Volcanic'), ('Metropolis'),
+('Village')
 
 
 
@@ -608,8 +609,10 @@ VALUES ('Pit of Death', 1, 1, 1, NULL, 'A community-created Player Destruction m
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID,   [Population], Notes)
 VALUES ('Watergate', 1, 1, 1, NULL, 'A community-created Player Destruction map introduced in the October 6, 2015 patch.')
 
-SELECT * FROM Locations
+SELECT * FROM Locations 
 SELECT * FROM Environments
 
 INSERT LocationEnvironments
-VALUES ( 1, 1), (1, 2), ( 2, 2), ( 3, ), ( 4, ), ( 5, ), ( 6, ), ( 7, ), ( 8, ), ( 9, ), ( 10, ), ( 11, ), ( 12, ), ( 13, ), ( 14, ), 
+VALUES ( 1, 1), (1, 2), ( 2, 2), ( 3, 2), ( 3, 3), ( 4, 2), ( 4, 3), ( 5, 2), ( 5, 4), ( 6, 2), ( 7, 5), ( 8, 5), ( 9, 3), 
+( 9, 6), ( 10, 6), ( 11, 6), ( 12, 3), ( 13, 3), ( 14, 6), ( 15, 7), ( 16, 6), ( 16, 8), ( 17, 7), ( 18, 3), ( 19, 7), 
+( 20, 5), ( 21, 7), ( 22, 3), ( 23, 3), ( 24, 3), ( 24, 6), ( 25, 9), ( 26, ), ( 27, ), ( 28, ), ( 29, ), ( 30, ), ( 31, ), 
