@@ -172,34 +172,49 @@ CONSTRAINT FK_Races_Worlds FOREIGN KEY (WorldID) REFERENCES Worlds(WorldID),
 CONSTRAINT FK_Races_Locations FOREIGN KEY (LocationID) REFERENCES Locations(LocationID)
 )
 
-CREATE TABLE ItemPurpose(
+CREATE TABLE ItemPurposes(
 PurposeID INT IDENTITY(1,1),
 ItemPurpose VARCHAR(100) NOT NULL
 
-CONSTRAINT PK_ItemPurpose PRIMARY KEY (PurposeID)
+CONSTRAINT PK_PurposeID PRIMARY KEY (PurposeID)
 )
 
 
 CREATE TABLE Items
 (ItemID INT IDENTITY(1,1),
 ItemName VARCHAR(100) NOT NULL,
-PrimaryPurpose INT NULL,
-SecondaryPurpose INT NULL,
-TertiaryPurpose INT NULL,
+ItemType VARCHAR(35) NOT NULL,
 BaseDamage VARCHAR(15) NULL,
-ObtainMethod VARCHAR(35) NULL
-
+ObtainMethod VARCHAR(35) NULL,
+SeriesID INT NOT NULL,
+TitleID INT NULL,
+[Stats] VARCHAR(150) NULL,
+Notes VARCHAR(MAX) NULL
 
 CONSTRAINT PK_ItemID PRIMARY KEY (ItemID),
-CONSTRAINT FK_Item_Purpose1 FOREIGN KEY (PrimaryPurpose) REFERENCES ItemPurpose(PurposeID),
-CONSTRAINT FK_Item_Purpose2 FOREIGN KEY (SecondaryPurpose) REFERENCES ItemPurpose(PurposeID),
-CONSTRAINT FK_Item_Purpose3 FOREIGN KEY (TertiaryPurpose) REFERENCES ItemPurpose(PurposeID) ,
-CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'Punishment', 'Random Drop'))
+CONSTRAINT FK_Items_Series FOREIGN KEY (SeriesID) REFERENCES Series(SeriesID),
+CONSTRAINT FK_Items_Titles FOREIGN KEY (TitleID) REFERENCES Titles(TitleID),
+CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'Punishment', 'Random Drop', 'Glitch'))
 )
 
+CREATE TABLE Items_Purposes
+(
+ItemID INT,
+PurposeID INT
+CONSTRAINT PK_ItemPurpose PRIMARY KEY (ItemID, PurposeID),
+CONSTRAINT FK_IP_Items FOREIGN KEY (ItemID) REFERENCES Items(ItemID),
+CONSTRAINT FK_IP_Purposes FOREIGN KEY (PurposeID) REFERENCES ItemPurposes(PurposeID)
+)
 
+CREATE TABLE CharacterItems
+(
+ItemID INT,
+CharacterID INT
 
-
+CONSTRAINT PK_CharacterItem PRIMARY KEY (ItemID, CharacterID),
+CONSTRAINT FK_CharacterItems_Characters FOREIGN KEY (CharacterID) REFERENCES Characters(CharacterID),
+CONSTRAINT FK_CharacterItems_Items FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
+)
 
 
 ---------------------------------POPULATION START-----------------------------------------------------------------------------------------------
@@ -322,8 +337,8 @@ VALUES ('Earth', 1)
 
 INSERT Environments (Environment)
 VALUES ('Tropical'),('Jungle'),('Industrial'),('Ruins'),('Farmland'),('Alpine'),('Desert'),('Snowy'),('Halloween'),
-('Construction'),('Egyptian'),('Spytech'),('City'),('Maritime City'),('Brewery'),('Tundra'), ('Volcanic'), ('Metropolis'),
-('Village')
+('Construction'),('Egyptian'),('Spytech'),('City'),('Maritime'),('Brewery'),('Tundra'), ('Volcanic'), ('Metropolis'),
+('Village'), ('Traditional Japanese'), ('Space')
 
 
 
@@ -609,8 +624,6 @@ VALUES ('Pit of Death', 1, 1, 1, NULL, 'A community-created Player Destruction m
 INSERT Locations (LocationName, SeriesID, TitleID, WorldID,   [Population], Notes)
 VALUES ('Watergate', 1, 1, 1, NULL, 'A community-created Player Destruction map introduced in the October 6, 2015 patch.')
 
-SELECT * FROM Locations 
-SELECT * FROM Environments
 
 INSERT LocationEnvironments
 VALUES (1, 1), (1, 2), (2, 2), (3, 2), (3, 3), (4, 2), (4, 3), (5, 2), (5, 4), (6, 2), (7, 5), (8, 5), (9, 3), 
@@ -618,4 +631,17 @@ VALUES (1, 1), (1, 2), (2, 2), (3, 2), (3, 3), (4, 2), (4, 3), (5, 2), (5, 4), (
 (20, 5), (21, 7), (22, 3), (23, 3), (24, 3), (24, 6), (25, 9), (26, 6), (27, 6), (28, 10), (29, 6), (30, 11), 
 (31, 6), (32, 9), (33, 3), (34, 12), (35, 9), (36, 6), (37, 6), (37, 8), (38, 3), (39, 6), (40, 6), (41, 3), (42, 7), 
 (43, 6), (43, 8), (44, 2), (45, 9), (46, 7), (47, 6), (48, 7), (49, 9), (50, 7), (51, 8), (52, 6), (53, 6), (54, 7), 
-(, ), (, ), (, ), (, ), (, ), (, ), 
+(55, 9), (56, 7), (57, 6), (58, 3), (59, 5), (60, 6), (61, 12), (62, 3), (62, 7), (63, 7), (64, 6), (65, 9), (66, 9), (67, 5), (68, 9), (69, 3), 
+(69, 7), (70, 13), (71, 11), (72, 9), (73, 9), (74, 5), (75, 6), (75, 20), (76, 6), (76, 8), (77, 9), (78, 7), (79, 7), (80, 3), (81, 7), 
+(82, 7), (83, 7), (84, 9), (85, 3), (86, 6), (87, 6), (87, 19), (88, 21), (89, 7), (89, 17), (90, 3), (91, 13), (92, 6), (93, 9), (94, 13), 
+(94, 14), (94, 15)
+
+
+INSERT Items
+VALUES ('Scattergun', 'Weapon', '85-105 HP', 'Default', 1, 1, '10 pellets per shot, 6 shots in one clip, with the maximum number of shots carried at once being 32. 85-105 damage done at point-blank range, which decreases as distance increases.', 'A short shotgun wielded by the Scout in Team Fortress 2. This is the default primary weapon for the class, and every player starts with it.')
+,('Force-A-Nature', 'Weapon', '92-113 HP', 'Unlock', 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
+, ('Shortstop', 'Weapon', '', '', , , '', '')
+SELECT * FROM Characters
+
+INSERT CharacterItems
+VALUES (1, 1), 
