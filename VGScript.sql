@@ -179,6 +179,14 @@ ItemPurpose VARCHAR(100) NOT NULL
 CONSTRAINT PK_PurposeID PRIMARY KEY (PurposeID)
 )
 
+CREATE TABLE ObtainMethods
+(
+MethodID INT IDENTITY(1,1),
+ObtainMethod VARCHAR(35) NOT NULL UNIQUE,
+
+CONSTRAINT PK_MethodID PRIMARY KEY (MethodID)
+
+)
 
 CREATE TABLE Items
 (ItemID INT IDENTITY(1,1),
@@ -188,13 +196,12 @@ BaseDamage VARCHAR(15) NULL,
 ObtainMethod VARCHAR(35) NULL,
 SeriesID INT NOT NULL,
 TitleID INT NULL,
-[Stats] VARCHAR(150) NULL,
+[Stats] VARCHAR(500) NULL,
 Notes VARCHAR(MAX) NULL
 
 CONSTRAINT PK_ItemID PRIMARY KEY (ItemID),
 CONSTRAINT FK_Items_Series FOREIGN KEY (SeriesID) REFERENCES Series(SeriesID),
-CONSTRAINT FK_Items_Titles FOREIGN KEY (TitleID) REFERENCES Titles(TitleID),
-CONSTRAINT CK_Obtain CHECK (ObtainMethod IN ('Default', 'Unlock', 'Purchase', 'Punishment', 'Random Drop', 'Glitch'))
+CONSTRAINT FK_Items_Titles FOREIGN KEY (TitleID) REFERENCES Titles(TitleID)
 )
 
 CREATE TABLE Items_Purposes
@@ -217,6 +224,25 @@ CONSTRAINT FK_CharacterItems_Items FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
 )
 
 
+CREATE TABLE Weapons
+(
+WeaponID INT IDENTITY(1,1),
+WeaponName VARCHAR(100) NOT NULL,
+WeaponType VARCHAR(35) NOT NULL,
+BaseDamage VARCHAR(15) NOT NULL,
+ObtainMethod VARCHAR(35) NULL,
+SeriesID INT NOT NULL,
+TitleID INT NULL,
+[Stats] VARCHAR(150) NULL,
+Notes VARCHAR(MAX) NULL
+
+
+)
+
+CREATE TABLE CharacterWeapons
+(
+
+)
 ---------------------------------POPULATION START-----------------------------------------------------------------------------------------------
 
 
@@ -261,7 +287,11 @@ VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, th
 ('Sub-Boss Enemy', 'These are enemies that are stronger than the average enemy. They might move faster, or take more hits, or have some mindblowing ability that separates them from the rest of the fodder. "Mini-bosses" would fall in this category.'),
 	('Generic Enemy', 'Maybe it is just something you would consider fodder, or maybe it is nothing to scoff at, but something that falls in this category is a threat to you; however, it is not relevant enough to the plot of the game or powerful enough (or grandiose enough) to fall into the other enemy categories.'),
 		('Generic NPC', 'Another face in the crowd, these are characters that you cannot play as, and either have very little character to them, or are incredibly inconsequential to the story. However, they still do have a set name or title.'), 
-		('Shopkeeper', 'So many wares! This role encompasses those that sell you different types of item'), ('Character Class', ''), ('Primary Grey Character', ''), ('Secondary Grey Character', '')
+		('Shopkeeper', 'So many wares! This role encompasses those whose primary role is to sell you different types of items. Whether they are friend or foe is irrelevant; they have got some cool stuff, so it does not matter that much.'), 
+		('Character Class', 'Maybe you want the fast one, or the tanky one, or... maybe the stealthy one. This role is for those that may not have a set name, but are playable and are less so defined by their character, and more so by their abilities.'), 
+		('Primary Grey Character', 'One minute, you are helping a sweet grandma across the street; the next, you are robbing a bank, and have already killed 4 hostages. This role covers characters, playable or not, that are at the forefront of the story/game, whose moral compass is more erratic than a confused coke fiend in a sugar factory.'), 
+		('Secondary Grey Character', 'Are we cool, or nah? This role covers those that have not really decided whether they are a good or bad guy yet, and they probably will not decide any time soon. A lot of the time these characters are your characters rival of sorts, but that is in no way a rule.')
+
 
 
 
@@ -272,7 +302,11 @@ VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, th
 INSERT Series (SeriesName, DebutDate)
 VALUES ('Team Fortress', '04-07-1999')
 
-
+INSERT Series (SeriesName, DebutDate)
+VALUES ('The Legend of Zelda', '02-21-1986'), ('Spyro', '09-09-1998'), ('Fallout', '09-30-1997'), ('Mario', '07-09-1981'), 
+('Doom', '12-10-1993'), ('The Elder Scrolls', '03-25-1994'), ('The Witcher', '10-26-2007'), ('Warcraft', '11-23-1994'),
+('Kirby', '04-27-1992'), ('Donkey Kong', '07-09-1981'), ('Metroid', '08-06-1986'), ('Pokemon', '02-27-1996'), 
+('Sonic The Hedgehog', '06-23-1991')
 
 
 
@@ -306,13 +340,13 @@ INSERT Characters ( CharTitle, SeriesID, TitleID, RoleID, Notes)
 VALUES ('Pyro', 1, 1, 7, 'One of the Offensive classes of Team Fortress 2, not much is known about the Pyro. All that is known is that they REALLY like burning things... sort of. They think they are playing with the other mercenaries in their severe delusion, but that is about all that is known. Their name? Unknown. Their sex? Unknown. Their motivation? Unknown.')
 
 INSERT Characters ( CharTitle, CharFirstName, CharMidName, CharLastName, SeriesID, TitleID, RoleID, Age, Notes)
-VALUES ('Demoman', 'Tavish', 'Finnegan', 'DeGroot', 1, 1, 7, 41, 'One of the Defensive classes of Team Fortress 2, Tavish is a master of explosives hailing from the Scottish Highlands. He has described himself as a black, Scottish cyclops, due to having lost his eye as a child... and being black... and from Scotland.')
+VALUES ('Demoman', 'Tavish', 'Finnegan', 'DeGroot', 1, 1, 7, 41, 'One of the Defensive classes of Team Fortress 2, Tavish is a master of explosives hailing from the Scottish Highlands. He has described himself as a black, Scottish cyclops, due to having lost his eye as a child... and being black... and from Scotland. His blood is also largely alcoholic, due to his copious consumption of alcohol.')
 
 INSERT Characters ( CharTitle, CharFirstName, SeriesID, TitleID, RoleID, Age, Notes)
 VALUES ('Heavy', 'Mikhael', 1, 1, 7, 57, 'One of the Defensive classes of Team Fortress 2, Mikhael (or "Misha" by his family, and "Heavy" by... everyone else) is a tank of a man from the coldest regions of Russia. His massive minigun, Sasha, mows down his enemies as he holds the objective, laughing at their puny attempts to capture it.')
 
 INSERT Characters ( CharTitle, CharFirstName, CharLastName, SeriesID, TitleID, RoleID, Age, Notes)
-VALUES ('Engineer', 'Dell', 'Conagher', 1, 1, 7, 35, 'One of the Defensive classes of Team Fortress 2, Dell is a soft-spoken boy from good ol Texas. He can create an array of buildings to assist his team with their battles, or to mow down any enemy foolish enough to walk in its sights.')
+VALUES ('Engineer', 'Dell', 'Conagher', 1, 1, 7, 35, 'One of the Defensive classes of Team Fortress 2, Dell is a soft-spoken boy from good ol' + '' + ' Texas. He can create an array of buildings to assist his team with their battles, or to mow down any enemy foolish enough to walk in its sights.')
 
 INSERT Characters ( CharTitle, CharLastName, SeriesID, TitleID, RoleID, Age, Notes)
 VALUES ('Medic', 'Ludwig', 1, 1, 7, 50, 'One of the Support classes of Team Fortress 2, Dr. Ludwig (who is really just known as the Medic) is an interesting man; it seems that he wants to keep his team alive and well, but with how he acts, you could say the Hippocratic Oath is really more of a Hippocratic Suggestion. He has a morbid fascination with the limits of the insides of humans, and his ingenuity knows no bounds.')
@@ -636,12 +670,15 @@ VALUES (1, 1), (1, 2), (2, 2), (3, 2), (3, 3), (4, 2), (4, 3), (5, 2), (5, 4), (
 (82, 7), (83, 7), (84, 9), (85, 3), (86, 6), (87, 6), (87, 19), (88, 21), (89, 7), (89, 17), (90, 3), (91, 13), (92, 6), (93, 9), (94, 13), 
 (94, 14), (94, 15)
 
+INSERT ObtainMethods
+VALUES ('Default'), ('Unlock'), ('Purchase'), ('Punishment'), ('Random Drop'), ('Glitch')
 
-INSERT Items
-VALUES ('Scattergun', 'Weapon', '85-105 HP', 'Default', 1, 1, '10 pellets per shot, 6 shots in one clip, with the maximum number of shots carried at once being 32. 85-105 damage done at point-blank range, which decreases as distance increases.', 'A short shotgun wielded by the Scout in Team Fortress 2. This is the default primary weapon for the class, and every player starts with it.')
-,('Force-A-Nature', 'Weapon', '92-113 HP', 'Unlock', 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
-, ('Shortstop', 'Weapon', '', '', , , '', '')
+
+INSERT Weapons
+VALUES ('Scattergun', 'Shotgun', '85-105 HP', 'Default', 1, 1, '10 pellets per shot, 6 shots in one clip, with the maximum number of shots carried at once being 32. 85-105 damage done at point-blank range, which decreases as distance increases.', 'A short shotgun wielded by the Scout in Team Fortress 2. This is the default primary weapon for the class, and every player starts with it.')
+,('Force-A-Nature', 'Shotgun', '92-113 HP', 'Unlock', 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
+, ('Shortstop', 'Pistol', '', '', , , '', '')
 SELECT * FROM Characters
 
 INSERT CharacterItems
-VALUES (1, 1), 
+VALUES (1, 1), (2, 1)
