@@ -7,7 +7,31 @@ END
 CREATE DATABASE VGDatabase
 
 GO
+
+IF (SELECT COUNT(*) FROM master.dbo.syslogins WHERE name = 'VGClient') > 0
+BEGIN
+	DROP LOGIN VGClient
+	USE VGDatabase
+	--This is weirdly inconsistent from script to script, don't know yet what determines whether this needs to be done yet, but I'm just going to
+	--comment it out for now.
+	--DROP USER VGClient
+	USE master
+END
+
+CREATE LOGIN VGClient WITH PASSWORD = 'Scuttlebug'
+ALTER LOGIN VGClient WITH DEFAULT_DATABASE = VGDatabase
+
+GO
+
 USE VGDatabase
+
+CREATE USER VGClient FOR LOGIN VGClient
+
+ALTER ROLE db_datareader ADD MEMBER VGClient
+ALTER ROLE db_datawriter ADD MEMBER VGClient
+
+
+GO
 
 CREATE TABLE Companies
 (CompanyID INT IDENTITY(1,1),
@@ -230,18 +254,28 @@ WeaponID INT IDENTITY(1,1),
 WeaponName VARCHAR(100) NOT NULL,
 WeaponType VARCHAR(35) NOT NULL,
 BaseDamage VARCHAR(15) NOT NULL,
-ObtainMethod VARCHAR(35) NULL,
+ObtainMethod INT NULL,
 SeriesID INT NOT NULL,
 TitleID INT NULL,
-[Stats] VARCHAR(150) NULL,
+[Stats] VARCHAR(MAX) NULL,
 Notes VARCHAR(MAX) NULL
+
+CONSTRAINT PK_WeaponID PRIMARY KEY (WeaponID),
+CONSTRAINT FK_Weapons_Series FOREIGN KEY (SeriesID) REFERENCES Series(SeriesID),
+CONSTRAINT FK_Weapons_Titles FOREIGN KEY (TitleID) REFERENCES Titles(TitleID),
+CONSTRAINT FK_Weapons_Obtain FOREIGN KEY (ObtainMethod) REFERENCES ObtainMethods(MethodID)
 
 
 )
 
 CREATE TABLE CharacterWeapons
 (
+WeaponID INT,
+CharacterID INT
 
+CONSTRAINT PK_CharacterWeapons PRIMARY KEY (WeaponID, CharacterID),
+CONSTRAINT FK_CharWeap_Weapons FOREIGN KEY (WeaponID) REFERENCES Weapons(WeaponID),
+CONSTRAINT FK_CharWeap_Characters FOREIGN KEY (CharacterID) REFERENCES Characters(CharacterID)
 )
 ---------------------------------POPULATION START-----------------------------------------------------------------------------------------------
 
@@ -283,7 +317,7 @@ VALUES ('Primary Protagonist', 'The good guy, the Chosen One, the big kahuna, th
 ('Secondary Protagonist', 'Your best friend, your partner-in-crime, the peanut butter to your jelly; this character '), 
 ('Primary Antagonist', 'The big baddie, the Cursed King of Darkness and Evil and the Common Cold, your jerk neighbor, Ted; whatever this is, it is your primary enemy. If the end goal (or at least primary goal) of the game is to defeat, overthrow, thwart, convert, or just kick the butt of whoever this is, then they probably fall in this category.'), 
 ('Secondary Antagonist', 'Maybe they are second-in-command to the Primary Antagonist, or maybe they are completely unrelated to them; this category of enemy, while not as imperative to the player, is still (probably) a gigantic threat. They tend to appear as a boss right before the Primary Antagonist, or a bit before them.'), 
-('Boss Enemy', 'Terror. Frustration. Awe. These big baddies will probably inspire these in the player, or at least in the player character.'),
+('Boss Enemy', 'Terror. Frustration. Awe. These big baddies will probably inspire these in the player, or at least in the player character. These are the type of enemy that perhaps constitutes a big health bar showing up somewhere on the screen, or perhaps they have their own music track, or they have their own unique name. Either way, they are big, they are bad, and you should get ready.'),
 ('Sub-Boss Enemy', 'These are enemies that are stronger than the average enemy. They might move faster, or take more hits, or have some mindblowing ability that separates them from the rest of the fodder. "Mini-bosses" would fall in this category.'),
 	('Generic Enemy', 'Maybe it is just something you would consider fodder, or maybe it is nothing to scoff at, but something that falls in this category is a threat to you; however, it is not relevant enough to the plot of the game or powerful enough (or grandiose enough) to fall into the other enemy categories.'),
 		('Generic NPC', 'Another face in the crowd, these are characters that you cannot play as, and either have very little character to them, or are incredibly inconsequential to the story. However, they still do have a set name or title.'), 
@@ -306,7 +340,7 @@ INSERT Series (SeriesName, DebutDate)
 VALUES ('The Legend of Zelda', '02-21-1986'), ('Spyro', '09-09-1998'), ('Fallout', '09-30-1997'), ('Mario', '07-09-1981'), 
 ('Doom', '12-10-1993'), ('The Elder Scrolls', '03-25-1994'), ('The Witcher', '10-26-2007'), ('Warcraft', '11-23-1994'),
 ('Kirby', '04-27-1992'), ('Donkey Kong', '07-09-1981'), ('Metroid', '08-06-1986'), ('Pokemon', '02-27-1996'), 
-('Sonic The Hedgehog', '06-23-1991')
+('Sonic The Hedgehog', '06-23-1991'), ('Diablo', '12-31-1996')
 
 
 
@@ -675,10 +709,18 @@ VALUES ('Default'), ('Unlock'), ('Purchase'), ('Punishment'), ('Random Drop'), (
 
 
 INSERT Weapons
-VALUES ('Scattergun', 'Shotgun', '85-105 HP', 'Default', 1, 1, '10 pellets per shot, 6 shots in one clip, with the maximum number of shots carried at once being 32. 85-105 damage done at point-blank range, which decreases as distance increases.', 'A short shotgun wielded by the Scout in Team Fortress 2. This is the default primary weapon for the class, and every player starts with it.')
-,('Force-A-Nature', 'Shotgun', '92-113 HP', 'Unlock', 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
-, ('Shortstop', 'Pistol', '', '', , , '', '')
-SELECT * FROM Characters
+VALUES ('Scattergun', 'Shotgun', '85-105 HP', 1, 1, 1, '10 pellets per shot, 6 shots in one clip, with the maximum number of shots carried at once being 32. 85-105 damage done at point-blank range, which decreases as distance increases.', 'A short shotgun wielded by the Scout in Team Fortress 2. This is the default primary weapon for the class, and every player starts with it.')
+,('Force-A-Nature', 'Shotgun', '92-113 HP', 2, 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
+, ('Shortstop', 'Pistol', '69-72 HP', 5, 1, 1, 'Compared to the Scattergun, around 40% faster firing speed, the entire clip is reloaded at once, 200% damage per pellet, around a 40% smaller weapon spread diameter, alt-fire does a shove if within melee range, each shot has 60% less pellets, and when active, the user receives 20% more knockback from all weapons and the Pyro''s compression blast.', 'A four-barreled derringer-style pistol used by the Scout in Team Fortress 2. This can be unlocked either from random drops or from certain series of crates. This weapon is a bit more effective than other scatterguns at mid range, much more effective at long range, but not as effective at short range.')
+, ('Soda Popper', 'Shotgun', '104 HP', 5, 1, 1, 'Compared to the Scattergun, ', '')
+SELECT * FROM Weapons
 
-INSERT CharacterItems
+INSERT CharacterWeapons
 VALUES (1, 1), (2, 1)
+
+--SELECT CharTitle, CONCAT(CharFirstName, ' ', CharMidName, ' ', CharLastName), WeaponName
+--FROM Characters C
+--INNER JOIN CharacterWeapons CW
+--ON CW.CharacterID = C.CharacterID
+--INNER JOIN Weapons W
+--ON W.WeaponID = CW.WeaponID
