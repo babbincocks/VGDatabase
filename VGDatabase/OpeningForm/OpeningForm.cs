@@ -23,5 +23,19 @@ namespace OpeningForm
         {
 
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmSearch search = new frmSearch();
+            search.ShowDialog();
+            this.Close();
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
