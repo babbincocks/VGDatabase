@@ -187,7 +187,8 @@ RaceName VARCHAR(50) NOT NULL,
 SeriesID INT NOT NULL,
 TitleID INT NULL,
 WorldID INT NULL,
-LocationID INT NULL
+LocationID INT NULL,
+Notes VARCHAR(MAX) NULL
 
 CONSTRAINT PK_RaceID PRIMARY KEY (RaceID),
 CONSTRAINT FK_Races_Series FOREIGN KEY (SeriesID) REFERENCES Series(SeriesID),
@@ -360,7 +361,7 @@ VALUES (1, 1), (1, 6), (1, 8)
 
 
 
-
+SELECT P.[Platform], T.Title FROM PlatformTitle PT INNER JOIN Titles T ON T.TitleID = PT.TitleID INNER JOIN Platforms P ON P.PlatformID = PT.PlatformID
 
 
 
@@ -713,7 +714,7 @@ VALUES ('Scattergun', 'Shotgun', '85-105 HP', 1, 1, 1, '10 pellets per shot, 6 s
 ,('Force-A-Nature', 'Shotgun', '92-113 HP', 2, 1, 1, 'Compared to the Scattergun, 50% faster firing speed, knockback on the target and shooter, +20% more bullets per shot, -10% damage penalty, and -66% clip size. Ammo reserve is the same size, and entire clip is reloaded at once.', 'A sawed-off shotgun wielded by the Scout in Team Fortress 2. This weapon is unlocked after the player obtains 10 Scout achievements. At point-blank range, this weapon performs better than the Scattergun most of the time, but any farther, and it becomes even less effective, due to the increased bullet spread.')
 , ('Shortstop', 'Pistol', '69-72 HP', 5, 1, 1, 'Compared to the Scattergun, around 40% faster firing speed, the entire clip is reloaded at once, 200% damage per pellet, around a 40% smaller weapon spread diameter, alt-fire does a shove if within melee range, each shot has 60% less pellets, and when active, the user receives 20% more knockback from all weapons and the Pyro''s compression blast.', 'A four-barreled derringer-style pistol used by the Scout in Team Fortress 2. This can be unlocked either from random drops or from certain series of crates. This weapon is a bit more effective than other scatterguns at mid range, much more effective at long range, but not as effective at short range.')
 , ('Soda Popper', 'Shotgun', '104 HP', 5, 1, 1, 'Compared to the Scattergun, ', '')
-SELECT * FROM Weapons
+
 
 INSERT CharacterWeapons
 VALUES (1, 1), (2, 1)
@@ -724,3 +725,25 @@ VALUES (1, 1), (2, 1)
 --ON CW.CharacterID = C.CharacterID
 --INNER JOIN Weapons W
 --ON W.WeaponID = CW.WeaponID
+
+
+---------------------------------------------------INSERTS FOR THE ELDER SCROLLS BEGIN-----------------------------------------------
+
+INSERT Worlds
+VALUES ('Nirn', NULL, 7, NULL)
+
+INSERT Locations
+VALUES ('Tamriel', 7, NULL, 1, NULL, 'Tamriel is the continent where all events of The Elder Scrolls games have taken place thus far, and is comprised of nine provinces: Cyrodiil, Elsweyr, Valenwood, Black Marsh, Morrowind, Skyrim, Hammerfell, High Rock, and Summerset Isle, each of which has a race that is native to it.'),
+('Akavir', 7, NULL, 1, NULL, '')
+
+INSERT Races
+VALUES ('Imperial', 7, NULL, 1, 1, 'Imperials hail from the province of Cyrodiil. They are a race of Men (Humans), comprised of some of the most well-educated, well-spoken, and wealthy people in Tamriel. A lot of their culture has roots in Altmer culture, ranging from their religion, to their language and architecture. They can be differentiated from other races of Men by their relatively less fair complexion compared to the other human races, while also having a lighter skin tone than that of Redguards. Imperials tend to make excellent diplomats, traders, and tacticians.'),
+('Khajiit', 7, NULL, 1, 1, 'One of the beast races of Tamriel, Khajiit hail from the province of Elsweyr'), 
+('Bosmer', 7, NULL, 1, 1, 'Commonly referred to as Wood Elves, the Bosmer are a race of Mer (Elves) that hail from the province of Valenwood.'), 
+('Argonian', 7, NULL, 1, 1, 'One of the beast races of Tamriel, Argonians hail from the province of Black Marsh'), 
+('Dunmer', 7, NULL, 1, 1, 'Commonly referred to as Dark Elves, the Dunmer are a race of Mer (Elves) that hail from the province of Morrowind.'), 
+('Nord', 7, NULL, 1, 1, 'Nords hail from the province of Skyrim. They are a race of Men (Humans)'), 
+('Redguard', 7, NULL, 1, 1, 'Redguards hail from the province of Hammerfell.'), 
+('Breton', 7, NULL, 1, 1, 'Bretons hail from the province of High Rock. They are a race of Men (Humans) that have strong traces of Mer (Elves) in their lineage.'), 
+('Altmer', 7, NULL, 1, 1, 'Commonly referred to as High Elves, the Altmer are a race of Mer (Elves) that hail from Summerset Isle. Of all of the races of Tamriel, the Altmer are the most gifted when it comes to magic, and are considered by many humans to be arrogant and disdainful towards them, but are also considered (for the most part) to be the most civilized race by both Men and Mer. Altmer are very proud of their heritage, due to being one of the oldest races of Tamriel, and tend to not have children with other races. Altmer are among the tallest of the humanoid races of Nirn, towering over other Mer, and having very few Men that can compare in height. Altmer have a pale gold skin tone, with a slender frame, prominently pointed ears, and almond-shaped eyes that can be amber, green, or a vibrant yellow. Altmer have made some of the very best mages in the history of Tamriel.'), 
+('Orsimer', 7, NULL, 1, 1, 'Commonly referred to as Orcs, the Orsimer are a race of Mer (Elves) that were born out of a feud between an Aedric god (Trinimac) and a Daedric Prince (Boethiah). The precursors to the Orsimer worshipped Trinimac, who was devoured by Boethiah; this event corrupted Trinimac, turning him into a new Daedric Prince: Malacath. Trinimac''s followers were physically corrupted from this, and became what the Orsimer are now. Orsimer are heavily muscular, with their skin tone ranging from light green, to dark brown, and they have large, sharp lower teeth that jut out of their mouth. Orcs tend to make excellent adventurers and legionnaires in the Imperial Legion, with a few even finding success as skilled mages. Due to a series of events, Orsimer don''t have a province they can call home.')
