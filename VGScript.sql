@@ -523,7 +523,8 @@ VALUES ('Nirn', NULL, 7, NULL)
 
 INSERT Locations
 VALUES ('Tamriel', 7, NULL, 1, NULL, 'Tamriel is the continent where all events of The Elder Scrolls games have taken place thus far, and is comprised of nine provinces: Cyrodiil, Elsweyr, Valenwood, Black Marsh, Morrowind, Skyrim, Hammerfell, High Rock, and Summerset Isle, each of which has a race that is native to it.'),
-('Akavir', 7, NULL, 1, NULL, 'Akavir is a continent far to the east of Tamriel, separated from it by a vast ocean. Not much is known of Akavir, other than several mighty beast races inhabit it.')
+('Akavir', 7, NULL, 1, NULL, 'Akavir is a continent far to the east of Tamriel, separated from it by a vast ocean. Not much is known of Akavir, other than several mighty beast races inhabit it.'),
+('Atmora', 7, NULL, 1, NULL, 'Atmora is a continent to the north of Tamriel, separated from it by a vast ocean. ')
 
 INSERT Races
 VALUES ('Imperial', 7, NULL, 1, 1, 'Imperials hail from the province of Cyrodiil. They are a race of Men (Humans), comprised of some of the most well-educated, well-spoken, and wealthy people in Tamriel. A lot of their culture has roots in Altmer culture, ranging from their religion, to their language and architecture. They can be differentiated from other races of Men by their relatively less fair complexion compared to the other human races, while also having a lighter skin tone than that of Redguards. Imperials tend to make excellent diplomats, traders, and tacticians. Imperials are split into two ethno-cultural groups: the Nibeneans of the east side of Cyrodiil, and the Colovians of the west side. The Nibeneans build their culture and religion off of ancient customs, and focus a considerable amount on philosophy, magic, and other related fields. The Colovians are a more physical sort, putting more faith in their sword arms and their emperor.'),

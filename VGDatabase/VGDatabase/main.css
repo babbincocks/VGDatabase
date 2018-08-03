@@ -1,0 +1,20 @@
+﻿#mainBody
+{
+    background: #0094ff;
+    border: solid;
+    width: 100%;
+    position:absolute;
+    left: 0;
+    top: 6px;
+}
+
+#sideSearch
+{
+    background: #0026ff;
+    border: solid;
+    border-width: 1px;
+    width: 25%;
+    position:absolute;
+    right: 0;
+    top: 6px;
+}

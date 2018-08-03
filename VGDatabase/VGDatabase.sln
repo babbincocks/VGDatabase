@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpeningForm", "OpeningForm\OpeningForm.csproj", "{5E41ED3D-C97D-4C2E-BFCA-AF2CB6F6AB17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGDatabase", "VGDatabase\VGDatabase.csproj", "{B92971A2-F238-4E76-946A-A3EAF702C71D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E41ED3D-C97D-4C2E-BFCA-AF2CB6F6AB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E41ED3D-C97D-4C2E-BFCA-AF2CB6F6AB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E41ED3D-C97D-4C2E-BFCA-AF2CB6F6AB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E41ED3D-C97D-4C2E-BFCA-AF2CB6F6AB17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92971A2-F238-4E76-946A-A3EAF702C71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92971A2-F238-4E76-946A-A3EAF702C71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92971A2-F238-4E76-946A-A3EAF702C71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92971A2-F238-4E76-946A-A3EAF702C71D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D9F22826-B55B-41EA-B98C-9070F75E23A9}
+		SolutionGuid = {D31B66DA-DA35-44B9-88C8-32A6DAB22E36}
 	EndGlobalSection
 EndGlobal
