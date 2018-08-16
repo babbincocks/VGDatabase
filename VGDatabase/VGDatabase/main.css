@@ -8,7 +8,7 @@
     top: 6px;
 }
 
-#sideSearch
+.sideSearch
 {
     background: #0026ff;
     border: solid;
@@ -17,4 +17,16 @@
     position:absolute;
     right: 0;
     top: 6px;
+}
+
+#innerSearch
+{
+    position: relative;
+    top: 17px;
+    left: 17px;
+    
+}
+
+#light {
+    color: white;
 }
